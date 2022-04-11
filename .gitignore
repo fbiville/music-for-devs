@@ -1,0 +1,9 @@
+﻿################################################################################
+# Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
+################################################################################
+
+/Examples/DotNet/Sinusoidale/SimpleSignalGenerator/.vs/SimpleSignalGenerator
+/.vs
+*.user
+/Examples/DotNet/Sinusoidale/SimpleSignalGenerator/SimpleSignalGenerator/bin/Debug/netcoreapp3.1
+/Examples/DotNet/Sinusoidale/SimpleSignalGenerator/SimpleSignalGenerator/obj
