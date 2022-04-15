@@ -2,6 +2,7 @@ package soundbox
 
 import (
 	"encoding/binary"
+	"github.com/fbiville/soundbox/pkg/soundbox/waves"
 	"math"
 	"os"
 	"time"
@@ -17,7 +18,7 @@ func NewDefaultSampler() *Sampler {
 	return &Sampler{sampleRate: defaultSampleRate}
 }
 
-func (s *Sampler) GenerateF32LE(sounds ...Sound) (string, time.Duration) {
+func (s *Sampler) GenerateF32LE(sounds ...waves.Sound) (string, time.Duration) {
 	file, _ := os.CreateTemp("", "sound.raw")
 	defer func() {
 		if err := file.Close(); err != nil {

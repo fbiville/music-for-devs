@@ -5,10 +5,11 @@ import (
 	. "github.com/fbiville/soundbox/pkg/soundbox"
 	. "github.com/fbiville/soundbox/pkg/soundbox/waves"
 	. "github.com/fbiville/soundbox/pkg/units"
+	. "math"
 	. "time"
 )
 
-// go run ./cmd/01-simple -duration 5 -frequency 550
+// go run ./cmd/02-phase
 func main() {
 	var rawDuration int
 	var rawFrequency float64
@@ -19,9 +20,14 @@ func main() {
 	duration := Duration(rawDuration) * Second
 	frequency := rawFrequency * Hertz
 
-	player := NewDefaultPlayer()
+	player := NewPlayerWithViz()
 	sampler := NewDefaultSampler()
 
-	// play with the frequency - does it sound linearly higher/lower?
-	player.PlayF32LE(sampler.GenerateF32LE(NewSound(duration, SineWave(frequency))))
+	// play with the phase - what happens when it's Pi?
+	phase := (Pi / 2) * Rad
+	player.PlayF32LE(sampler.GenerateF32LE(
+		NewSound(duration,
+			SineWave(frequency),
+			AnyWave(frequency, phase, 2, Sinusoidal))),
+	)
 }
