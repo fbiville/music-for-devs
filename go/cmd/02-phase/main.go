@@ -11,22 +11,19 @@ import (
 
 // go run ./cmd/02-phase
 func main() {
-	var rawDuration int
-	var rawFrequency float64
-	flag.IntVar(&rawDuration, "duration", 3, "Duration in seconds")
-	flag.Float64Var(&rawFrequency, "frequency", 440, "Sound frequency")
+	var rawPhase float64
+	flag.Float64Var(&rawPhase, "phase", Pi/2, "Phase (in radians)")
 	flag.Parse()
 
-	duration := Duration(rawDuration) * Second
-	frequency := rawFrequency * Hertz
+	frequency := 440 * Hertz
 
 	player := NewPlayerWithViz()
 	sampler := NewDefaultSampler()
 
 	// play with the phase - what happens when it's Pi?
-	phase := (Pi / 2) * Rad
+	phase := rawPhase * Rad
 	player.PlayF32LE(sampler.GenerateF32LE(
-		NewSound(duration,
+		NewSound(3*Second,
 			SineWave(frequency),
 			AnyWave(frequency, phase, 2, Sinusoidal))),
 	)
