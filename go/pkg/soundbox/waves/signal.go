@@ -22,7 +22,7 @@ type Wave interface {
 type Signal struct {
 	Frequency units.Frequency
 	Phase     units.Radians
-	Amplitude uint
+	Amplitude float64
 	Shape     BasicShape
 }
 
@@ -65,7 +65,7 @@ func SawtoothWave(frequency units.Frequency) Signal {
 	return Signal{
 		Frequency: frequency,
 		Phase:     0,
-		Amplitude: 1,
+		Amplitude: 0.25,
 		Shape:     Sawtooth,
 	}
 }
@@ -73,7 +73,7 @@ func SawtoothWave(frequency units.Frequency) Signal {
 func AnyWave(
 	frequency units.Frequency,
 	phase units.Radians,
-	amplitude uint,
+	amplitude float64,
 	shape BasicShape,
 ) Signal {
 	return Signal{
@@ -86,7 +86,7 @@ func AnyWave(
 
 func (s Signal) Value(rate, sample int) float64 {
 	input := float64(sample) / float64(rate)
-	sineValue := float64(s.Amplitude) * Sin(2*Pi*s.Frequency*input+s.Phase)
+	sineValue := s.Amplitude * Sin(2*Pi*s.Frequency*input+s.Phase)
 	switch s.Shape {
 	case Sinusoidal:
 		return sineValue
