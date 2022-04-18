@@ -9,7 +9,11 @@ import (
 	. "time"
 )
 
-// go run ./cmd/02-phase
+// go run ./cmd/02-phase -phase 1.0471975512
+// π   = 3.14159265359
+// π/2 = 1.57079632679
+// π/3 = 1.0471975512
+// π/4 = 0.78539816339
 func main() {
 	var rawPhase float64
 	flag.Float64Var(&rawPhase, "phase", Pi/2, "Phase (in radians)")
@@ -25,6 +29,6 @@ func main() {
 	player.PlayF32LE(sampler.GenerateF32LE(
 		NewSound(3*Second,
 			SineWave(frequency),
-			AnyWave(frequency, phase, 2, Sinusoidal))),
+			AnyWave(frequency, phase*Rad, DefaultAmplitude, Sinusoidal))),
 	)
 }

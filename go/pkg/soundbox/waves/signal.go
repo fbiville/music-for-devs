@@ -6,6 +6,8 @@ import (
 	. "math"
 )
 
+const DefaultAmplitude = 1
+
 type BasicShape int
 
 const (
@@ -26,19 +28,11 @@ type Signal struct {
 	Shape     BasicShape
 }
 
-func SineWaves(frequencies ...units.Frequency) []Wave {
-	result := make([]Wave, len(frequencies))
-	for i, frequency := range frequencies {
-		result[i] = SineWave(frequency)
-	}
-	return result
-}
-
 func SineWave(frequency units.Frequency) Signal {
 	return Signal{
 		Frequency: frequency,
 		Phase:     0,
-		Amplitude: 1,
+		Amplitude: DefaultAmplitude,
 		Shape:     Sinusoidal,
 	}
 }
@@ -47,7 +41,7 @@ func SquareWave(frequency units.Frequency) Signal {
 	return Signal{
 		Frequency: frequency,
 		Phase:     0,
-		Amplitude: 1,
+		Amplitude: DefaultAmplitude,
 		Shape:     Square,
 	}
 }
@@ -56,7 +50,7 @@ func TriangleWave(frequency units.Frequency) Signal {
 	return Signal{
 		Frequency: frequency,
 		Phase:     0,
-		Amplitude: 1,
+		Amplitude: DefaultAmplitude,
 		Shape:     Triangle,
 	}
 }
