@@ -7,3 +7,8 @@
 *.user
 /Examples/DotNet/Sinusoidale/SimpleSignalGenerator/SimpleSignalGenerator/bin/Debug/netcoreapp3.1
 /Examples/DotNet/Sinusoidale/SimpleSignalGenerator/SimpleSignalGenerator/obj
+
+# Exclude standard Java/Maven/Idea stuff
+target/
+.idea/
+*.iml
