@@ -30,5 +30,6 @@
 ## Computer Music / Coding
 
  - [Sonic Pi](https://sonic-pi.net/)
+ - [Useful Sonic Pi tips](https://blog.kellenbaker.com/5-sonic-pi-tips)
  - [cakewalk](https://www.cakewalk.com/)
  - [[Go] faiface/beep](https://github.com/faiface/beep)
